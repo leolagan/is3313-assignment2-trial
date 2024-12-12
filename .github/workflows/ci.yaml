@@ -42,7 +42,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'  # Specify your Python version
-
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -68,4 +71,4 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/${{ vars.HEROKU_APP_NAME }}.git main
+          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/${{ vars.HEROKU_APP_NAME }}.git mai
